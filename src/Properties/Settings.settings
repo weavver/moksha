@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Weavver_Unit_Tests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="weavverurl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://www.weavver.local/</Value>
+    </Setting>
+    <Setting Name="weavverdb" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">server=192.168.10.111;user=sa;password=#mdkf38;</Value>
+    </Setting>
+    <Setting Name="install_mode" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">true</Value>
+    </Setting>
+    <Setting Name="webfolder" Type="System.String" Scope="User">
+      <Value Profile="(Default)">W:\Projects\Weavver\Main\Servers\web\c\Inetpub\www</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
