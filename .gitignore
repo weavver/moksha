@@ -5,3 +5,4 @@ app.config
 WeavverLib.snk
 *.snk
 build
+!app.default.config

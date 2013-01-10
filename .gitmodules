@@ -1,0 +1,3 @@
+[submodule "vendors/weavver/data"]
+	path = vendors/weavver/data
+	url = git://github.com/weavver/data.git

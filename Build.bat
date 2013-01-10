@@ -1,0 +1,1 @@
+msbuild "src/Weavver Moksha.csproj" /p:Configuration=Release /p:Platform="Any CPU" /property:OutputDir=build
