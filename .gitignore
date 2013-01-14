@@ -1,8 +1,8 @@
 bin
 obj
-app.config
+*.config
 *.suo
-WeavverLib.snk
 *.snk
 build
 !app.default.config
+*.user
