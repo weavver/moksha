@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Weavver")]
 [assembly: AssemblyProduct("Weavver Moksha")]
-[assembly: AssemblyCopyright("©2011 Weavver, Inc.")]
+[assembly: AssemblyCopyright("©2011-2013 Weavver, Inc.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
