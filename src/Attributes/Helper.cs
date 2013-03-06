@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-using Weavver.Data;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium;
 using System.IO;

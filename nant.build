@@ -43,9 +43,22 @@
                     <include name="src/Attributes/*.cs" />
                </sources>
           </csc>
+          <csc target="library" output="${build.dir}/Weavver.Moksha.dll" debug="${debug}">
+               <references>
+                    <include name="vendors/selenium/WebDriver.dll" />
+                    <include name="vendors/selenium/WebDriver.Support.dll" />
+                    <include name="${build.dir}/Weavver.Data.dll" />
+                    <include name="System.Data.Entity.dll" />
+               </references>
+               <sources>
+                    <include name="src/**.cs" />
+                    <include name="src/Attributes/*.cs" />
+               </sources>
+          </csc>
 	</target>
     <target name="rebuild" depends="clean, build" />
     <target name="run" depends="build">
         <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
     </target>
+    <target name="test" depends="build"></target>
 </project>
