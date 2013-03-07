@@ -8,6 +8,7 @@ namespace Weavver.Testing
 {
      public static class TestingContext
      {
+          public static string[] Arguments;
           public static List<System_Tests> Tests = new List<System_Tests>();
 
           public static int BuildNumber = 179;

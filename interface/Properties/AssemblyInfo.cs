@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Weavver.Moksha")]
+[assembly: AssemblyTitle("Weavver.MokshaInterface")]
 [assembly: AssemblyDescription("Unit testing and cruise control for software projects.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Weavver")]

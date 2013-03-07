@@ -18,6 +18,7 @@ namespace Weavver.Testing
 {
      public partial class TestingHarness : Form
      {
+          Assembly testAssembly = null;
 //-------------------------------------------------------------------------------------------
           public TestingHarness()
           {
@@ -34,7 +35,16 @@ namespace Weavver.Testing
 
                dataGridView1.AutoGenerateColumns = false;
 
-               var testTypes = (from x in Assembly.GetExecutingAssembly().GetTypes()
+               if (TestingContext.Arguments.Length > 0)
+               {
+                    testAssembly = Assembly.LoadFile(TestingContext.Arguments[0]);
+               }
+               else
+               {
+                    testAssembly = Assembly.GetExecutingAssembly();
+               }
+
+               var testTypes = (from x in testAssembly.GetTypes()
                                 where LinqTestHelpers.HasAttribute(typeof(StagingTest), x)
                                 || LinqTestHelpers.HasAttribute(typeof(ManualTest), x)
                                 select x);
@@ -60,6 +70,12 @@ namespace Weavver.Testing
                BindData();
 
                tbSearch.Focus();
+
+               if (TestingContext.Arguments.Length > 0)
+               {
+                    Console.WriteLine("Running tests..");
+                    ThreadPool.QueueUserWorkItem(o => RunTests());
+               }
           }
 //-------------------------------------------------------------------------------------------
           private void BindData()
@@ -97,6 +113,28 @@ namespace Weavver.Testing
                ThreadPool.QueueUserWorkItem(o => RunTest(test));
           }
 //-------------------------------------------------------------------------------------------
+          public void RunTests()
+          {
+               var sortedTests = from x in TestingContext.Tests
+                                 where x.IsStagingTest
+                                 orderby x.Path ascending
+                                 select x;
+
+               sortedTests.ToList().ForEach(
+                    x =>
+                    {
+                         try
+                         {
+                              RunTest(x);
+                         }
+                         catch (Exception ex)
+                         {
+                              Console.WriteLine(ex.ToString());
+                         }
+                    }
+                    );
+          }
+//-------------------------------------------------------------------------------------------
           private void RunTest(System_Tests test)
           {
                //test.StartTime = DateTime.UtcNow;
@@ -109,7 +147,7 @@ namespace Weavver.Testing
                string typePath = test.Path.Substring(0, test.Path.LastIndexOf("."));
                string methodName = test.Path.Substring(test.Path.LastIndexOf(".") + 1);
 
-               var testType = (from x in Assembly.GetExecutingAssembly().GetTypes()
+               var testType = (from x in testAssembly.GetTypes()
                                 where x.FullName == typePath
                                 select x).FirstOrDefault();
 

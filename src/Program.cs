@@ -19,6 +19,8 @@ namespace Weavver.Testing
           [STAThread]
           static void Main(string[] arguments)
           {
+               TestingContext.Arguments = arguments;
+
                Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
 

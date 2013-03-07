@@ -8,57 +8,24 @@
           <delete dir="src\bin" />
           <delete dir="src\obj" />
      </target>
-     <target name="weavver.data">
-          <nant target="${target::get-current-target()}" buildfile="vendors/weavver/data/nant.build">
-               <properties>
-                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
-               </properties>
-          </nant>
+     <target name="build">
+          <mkdir dir="${build.dir}" />
+          <exec program="C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe" commandline="&quot;${directory::get-current-directory()}\Weavver Moksha.sln&quot; /Build Release" />
      </target>
-     <target name="weavver.net">
-          <nant target="${target::get-current-target()}" buildfile="vendors/weavver/net/nant.build">
-               <properties>
-                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
-               </properties>
-          </nant>
+     <target name="rebuild" depends="clean, build" />
+     <target name="run" depends="build">
+          <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
      </target>
-     <target name="weavver.vendors">
-          <nant target="${target::get-current-target()}" buildfile="vendors/weavver/vendors/nant.build">
-               <properties>
-                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
-               </properties>
-          </nant>
-     </target>
-     <target name="build" depends="weavver.net, weavver.vendors, weavver.data">
-		<mkdir dir="${build.dir}" />
-          <csc target="exe" output="${build.dir}/moksha.exe" debug="${debug}">
-               <references>
-                    <include name="vendors/selenium/WebDriver.dll" />
-                    <include name="vendors/selenium/WebDriver.Support.dll" />
-                    <include name="${build.dir}/Weavver.Data.dll" />
-                    <include name="System.Data.Entity.dll" />
-               </references>
-               <sources>
-                    <include name="src/**.cs" />
-                    <include name="src/Attributes/*.cs" />
-               </sources>
-          </csc>
-          <csc target="library" output="${build.dir}/Weavver.Moksha.dll" debug="${debug}">
-               <references>
-                    <include name="vendors/selenium/WebDriver.dll" />
-                    <include name="vendors/selenium/WebDriver.Support.dll" />
-                    <include name="${build.dir}/Weavver.Data.dll" />
-                    <include name="System.Data.Entity.dll" />
-               </references>
-               <sources>
-                    <include name="src/**.cs" />
-                    <include name="src/Attributes/*.cs" />
-               </sources>
-          </csc>
-	</target>
-    <target name="rebuild" depends="clean, build" />
-    <target name="run" depends="build">
-        <!--<exec program="${build.dir}/Weavver.Data.dll" />-->
-    </target>
-    <target name="test" depends="build"></target>
+     <target name="test" depends="build"></target>
 </project>
+
+
+
+
+<!--<target name="weavver.data">
+          <nant target="${target::get-current-target()}" buildfile="../data/nant.build">
+               <properties>
+                    <property name="build.dir" value="${build.dir}" overwrite="false" readonly="true" />
+               </properties>
+          </nant>
+     </target>-->
