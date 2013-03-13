@@ -29,10 +29,12 @@
           private void InitializeComponent()
           {
                this.components = new System.ComponentModel.Container();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
                this.dataGridView1 = new System.Windows.Forms.DataGridView();
                this.IsStagingTest = new System.Windows.Forms.DataGridViewCheckBoxColumn();
                this.Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +55,7 @@
                this.checkBox2 = new System.Windows.Forms.CheckBox();
                this.splitContainer1 = new System.Windows.Forms.SplitContainer();
                this.RunAutomatically = new System.Windows.Forms.CheckBox();
+               this.bKeepFailedTestOpen = new System.Windows.Forms.CheckBox();
                ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
                this.groupBox1.SuspendLayout();
                this.groupBox2.SuspendLayout();
@@ -69,6 +72,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
                this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
                this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+               dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+               dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+               dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
                this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IsStagingTest,
@@ -76,19 +87,27 @@
             this.Column6,
             this.LastRan,
             this.Status});
-               dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-               dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-               dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-               dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-               dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-               dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-               dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+               dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+               dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+               dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle10;
                this.dataGridView1.Location = new System.Drawing.Point(2, 29);
                this.dataGridView1.Name = "dataGridView1";
-               dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Ivory;
-               dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-               this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle4;
+               dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+               dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+               dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+               dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.Ivory;
+               dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
+               this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle12;
                this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
                this.dataGridView1.Size = new System.Drawing.Size(741, 397);
                this.dataGridView1.TabIndex = 0;
@@ -120,8 +139,8 @@
                // 
                this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
                this.Column6.DataPropertyName = "RunTime";
-               dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.Column6.DefaultCellStyle = dataGridViewCellStyle1;
+               dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.Column6.DefaultCellStyle = dataGridViewCellStyle8;
                this.Column6.HeaderText = "Run Time";
                this.Column6.Name = "Column6";
                this.Column6.ReadOnly = true;
@@ -138,8 +157,8 @@
                // Status
                // 
                this.Status.DataPropertyName = "Status";
-               dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-               this.Status.DefaultCellStyle = dataGridViewCellStyle2;
+               dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+               this.Status.DefaultCellStyle = dataGridViewCellStyle9;
                this.Status.HeaderText = "Status";
                this.Status.Name = "Status";
                this.Status.ReadOnly = true;
@@ -274,6 +293,7 @@
                // 
                // splitContainer1.Panel1
                // 
+               this.splitContainer1.Panel1.Controls.Add(this.bKeepFailedTestOpen);
                this.splitContainer1.Panel1.Controls.Add(this.RunAutomatically);
                this.splitContainer1.Panel1.Controls.Add(this.tbSearch);
                this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
@@ -300,6 +320,17 @@
                this.RunAutomatically.UseVisualStyleBackColor = true;
                this.RunAutomatically.CheckedChanged += new System.EventHandler(this.RunAutomatically_CheckedChanged);
                // 
+               // bKeepFailedTestOpen
+               // 
+               this.bKeepFailedTestOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+               this.bKeepFailedTestOpen.AutoSize = true;
+               this.bKeepFailedTestOpen.Location = new System.Drawing.Point(764, 145);
+               this.bKeepFailedTestOpen.Name = "bKeepFailedTestOpen";
+               this.bKeepFailedTestOpen.Size = new System.Drawing.Size(135, 17);
+               this.bKeepFailedTestOpen.TabIndex = 9;
+               this.bKeepFailedTestOpen.Text = "Keep Failed Test Open";
+               this.bKeepFailedTestOpen.UseVisualStyleBackColor = true;
+               // 
                // TestingHarness
                // 
                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,7 +339,7 @@
                this.Controls.Add(this.splitContainer1);
                this.Name = "TestingHarness";
                this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-               this.Text = "Weavver Testing Harness";
+               this.Text = "Weavver Moksha - Release & Testing Harness";
                this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
                this.Load += new System.EventHandler(this.TestingHarness_Load);
                ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -347,6 +378,7 @@
           private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
           private System.Windows.Forms.DataGridViewTextBoxColumn LastRan;
           private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+          private System.Windows.Forms.CheckBox bKeepFailedTestOpen;
 
      }
 }

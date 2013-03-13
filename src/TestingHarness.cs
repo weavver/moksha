@@ -35,9 +35,9 @@ namespace Weavver.Testing
 
                dataGridView1.AutoGenerateColumns = false;
 
-               if (TestingContext.Arguments.Length > 0)
+               if (TestingContext.Arguments["testlib"] != null)
                {
-                    testAssembly = Assembly.LoadFile(TestingContext.Arguments[0]);
+                    testAssembly = Assembly.LoadFile(TestingContext.Arguments["testlib"]);
                }
                else
                {
@@ -71,7 +71,7 @@ namespace Weavver.Testing
 
                tbSearch.Focus();
 
-               if (TestingContext.Arguments.Length > 0)
+               if (TestingContext.Arguments["runtests"] == "true")
                {
                     Console.WriteLine("Running tests..");
                     ThreadPool.QueueUserWorkItem(o => RunTests());
@@ -180,9 +180,12 @@ namespace Weavver.Testing
                {
                     try
                     {
-                         var TearDownMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureTearDownAttribute));
-                         if (TearDownMethod != null)
-                              TearDownMethod.Invoke(o, null);
+                         if (!bKeepFailedTestOpen.Checked)
+                         {
+                              var TearDownMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureTearDownAttribute));
+                              if (TearDownMethod != null)
+                                   TearDownMethod.Invoke(o, null);
+                         }
                     }
                     catch { }
                }
