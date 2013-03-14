@@ -180,7 +180,7 @@ namespace Weavver.Testing
                {
                     try
                     {
-                         if (!bKeepFailedTestOpen.Checked)
+                         if (!bSkipCleanUp.Checked)
                          {
                               var TearDownMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureTearDownAttribute));
                               if (TearDownMethod != null)
