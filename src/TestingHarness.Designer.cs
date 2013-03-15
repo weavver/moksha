@@ -29,18 +29,13 @@
           private void InitializeComponent()
           {
                this.components = new System.ComponentModel.Container();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle55 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle58 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle59 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle60 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle56 = new System.Windows.Forms.DataGridViewCellStyle();
-               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle57 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+               System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
                this.dataGridView1 = new System.Windows.Forms.DataGridView();
-               this.IsStagingTest = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-               this.Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
-               this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-               this.LastRan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-               this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
                this.timerRefreshDataGridView = new System.Windows.Forms.Timer(this.components);
                this.RunAllTests = new System.Windows.Forms.LinkLabel();
                this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -56,6 +51,11 @@
                this.splitContainer1 = new System.Windows.Forms.SplitContainer();
                this.bSkipCleanUp = new System.Windows.Forms.CheckBox();
                this.RunAutomatically = new System.Windows.Forms.CheckBox();
+               this.IsStagingTest = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+               this.Path = new System.Windows.Forms.DataGridViewTextBoxColumn();
+               this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+               this.LastRan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+               this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
                ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
                this.groupBox1.SuspendLayout();
                this.groupBox2.SuspendLayout();
@@ -70,16 +70,15 @@
                this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-               this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
                this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-               dataGridViewCellStyle55.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-               dataGridViewCellStyle55.BackColor = System.Drawing.SystemColors.Control;
-               dataGridViewCellStyle55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-               dataGridViewCellStyle55.ForeColor = System.Drawing.SystemColors.WindowText;
-               dataGridViewCellStyle55.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-               dataGridViewCellStyle55.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-               dataGridViewCellStyle55.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle55;
+               dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+               dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+               dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
                this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
                this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IsStagingTest,
@@ -87,27 +86,27 @@
             this.Column6,
             this.LastRan,
             this.Status});
-               dataGridViewCellStyle58.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-               dataGridViewCellStyle58.BackColor = System.Drawing.SystemColors.Window;
-               dataGridViewCellStyle58.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-               dataGridViewCellStyle58.ForeColor = System.Drawing.SystemColors.ControlText;
-               dataGridViewCellStyle58.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-               dataGridViewCellStyle58.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-               dataGridViewCellStyle58.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle58;
+               dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+               dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+               dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
                this.dataGridView1.Location = new System.Drawing.Point(2, 29);
                this.dataGridView1.Name = "dataGridView1";
-               dataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-               dataGridViewCellStyle59.BackColor = System.Drawing.SystemColors.Control;
-               dataGridViewCellStyle59.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-               dataGridViewCellStyle59.ForeColor = System.Drawing.SystemColors.WindowText;
-               dataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-               dataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-               dataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle59;
-               dataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.Ivory;
-               dataGridViewCellStyle60.SelectionForeColor = System.Drawing.Color.Black;
-               this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle60;
+               dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+               dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+               dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+               dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+               dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+               dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+               dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+               dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Ivory;
+               dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+               this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle6;
                this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
                this.dataGridView1.Size = new System.Drawing.Size(741, 397);
                this.dataGridView1.TabIndex = 0;
@@ -115,54 +114,6 @@
                this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
                this.dataGridView1.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
                this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
-               // 
-               // IsStagingTest
-               // 
-               this.IsStagingTest.DataPropertyName = "IsStagingTest";
-               this.IsStagingTest.FalseValue = "false";
-               this.IsStagingTest.HeaderText = "IsStagingTest";
-               this.IsStagingTest.Name = "IsStagingTest";
-               this.IsStagingTest.ReadOnly = true;
-               this.IsStagingTest.TrueValue = "true";
-               this.IsStagingTest.Width = 78;
-               // 
-               // Path
-               // 
-               this.Path.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-               this.Path.DataPropertyName = "Path";
-               this.Path.HeaderText = "Path";
-               this.Path.Name = "Path";
-               this.Path.ReadOnly = true;
-               this.Path.Width = 54;
-               // 
-               // Column6
-               // 
-               this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-               this.Column6.DataPropertyName = "RunTime";
-               dataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-               this.Column6.DefaultCellStyle = dataGridViewCellStyle56;
-               this.Column6.HeaderText = "Run Time";
-               this.Column6.Name = "Column6";
-               this.Column6.ReadOnly = true;
-               this.Column6.Width = 78;
-               // 
-               // LastRan
-               // 
-               this.LastRan.DataPropertyName = "LastRun";
-               this.LastRan.HeaderText = "Last Run";
-               this.LastRan.Name = "LastRan";
-               this.LastRan.ReadOnly = true;
-               this.LastRan.Width = 75;
-               // 
-               // Status
-               // 
-               this.Status.DataPropertyName = "Status";
-               dataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-               this.Status.DefaultCellStyle = dataGridViewCellStyle57;
-               this.Status.HeaderText = "Status";
-               this.Status.Name = "Status";
-               this.Status.ReadOnly = true;
-               this.Status.Width = 62;
                // 
                // timerRefreshDataGridView
                // 
@@ -332,6 +283,53 @@
                this.RunAutomatically.UseVisualStyleBackColor = true;
                this.RunAutomatically.CheckedChanged += new System.EventHandler(this.RunAutomatically_CheckedChanged);
                // 
+               // IsStagingTest
+               // 
+               this.IsStagingTest.DataPropertyName = "IsStagingTest";
+               this.IsStagingTest.FalseValue = "false";
+               this.IsStagingTest.HeaderText = "IsStagingTest";
+               this.IsStagingTest.Name = "IsStagingTest";
+               this.IsStagingTest.ReadOnly = true;
+               this.IsStagingTest.TrueValue = "true";
+               this.IsStagingTest.Width = 80;
+               // 
+               // Path
+               // 
+               this.Path.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+               this.Path.DataPropertyName = "Path";
+               this.Path.HeaderText = "Path";
+               this.Path.Name = "Path";
+               this.Path.ReadOnly = true;
+               // 
+               // Column6
+               // 
+               this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+               this.Column6.DataPropertyName = "RunTime";
+               dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+               this.Column6.DefaultCellStyle = dataGridViewCellStyle2;
+               this.Column6.HeaderText = "Run Time";
+               this.Column6.Name = "Column6";
+               this.Column6.ReadOnly = true;
+               this.Column6.Width = 78;
+               // 
+               // LastRan
+               // 
+               this.LastRan.DataPropertyName = "LastRun";
+               this.LastRan.HeaderText = "Last Run";
+               this.LastRan.Name = "LastRan";
+               this.LastRan.ReadOnly = true;
+               this.LastRan.Width = 80;
+               // 
+               // Status
+               // 
+               this.Status.DataPropertyName = "Status";
+               dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+               this.Status.DefaultCellStyle = dataGridViewCellStyle3;
+               this.Status.HeaderText = "Status";
+               this.Status.Name = "Status";
+               this.Status.ReadOnly = true;
+               this.Status.Width = 80;
+               // 
                // TestingHarness
                // 
                this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -374,12 +372,12 @@
           private System.Windows.Forms.CheckBox checkBox2;
           private System.Windows.Forms.SplitContainer splitContainer1;
           private System.Windows.Forms.CheckBox RunAutomatically;
+          private System.Windows.Forms.CheckBox bSkipCleanUp;
           private System.Windows.Forms.DataGridViewCheckBoxColumn IsStagingTest;
           private System.Windows.Forms.DataGridViewTextBoxColumn Path;
           private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
           private System.Windows.Forms.DataGridViewTextBoxColumn LastRan;
           private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-          private System.Windows.Forms.CheckBox bSkipCleanUp;
 
      }
 }
