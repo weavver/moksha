@@ -6,6 +6,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EEF1025-83ED-4A9C-BACB-91D9E29577F5}"
 	ProjectSection(SolutionItems) = preProject
 		nant.build = nant.build
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Weavver.Vendors", "..\vendors\src\Weavver.Vendors.csproj", "{01490A61-F803-41A3-89D4-D6CAC7A97DA6}"
