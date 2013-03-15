@@ -63,6 +63,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>C:\Weavver\Main\Projects\3rd Party\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SharpSvn">
+      <HintPath>..\vendors\sharpsvn\SharpSvn.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Activities.Core.Presentation" />
     <Reference Include="System.configuration" />

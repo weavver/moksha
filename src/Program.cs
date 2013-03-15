@@ -43,7 +43,11 @@ namespace Weavver.Testing
           {
                string folderPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                string assemblyPath = Path.Combine(folderPath, new AssemblyName(args.Name).Name + ".dll");
-               if (File.Exists(assemblyPath) == false) return null;
+               if (File.Exists(assemblyPath) == false)
+               {
+                    assemblyPath = Path.Combine(Path.GetDirectoryName(TestingContext.TestAssembly.Location), new AssemblyName(args.Name).Name + ".dll");
+                    if (File.Exists(assemblyPath) == false)  { return null;}
+               }
                Assembly assembly = Assembly.LoadFrom(assemblyPath);
                return assembly;
           }

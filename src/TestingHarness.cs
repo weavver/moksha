@@ -18,7 +18,6 @@ namespace Weavver.Testing
 {
      public partial class TestingHarness : Form
      {
-          Assembly testAssembly = null;
 //-------------------------------------------------------------------------------------------
           public TestingHarness()
           {
@@ -37,14 +36,14 @@ namespace Weavver.Testing
 
                if (TestingContext.Arguments["testlib"] != null)
                {
-                    testAssembly = Assembly.LoadFile(TestingContext.Arguments["testlib"]);
+                    TestingContext.TestAssembly = Assembly.LoadFile(TestingContext.Arguments["testlib"]);
                }
                else
                {
-                    testAssembly = Assembly.GetExecutingAssembly();
+                    TestingContext.TestAssembly = Assembly.GetExecutingAssembly();
                }
 
-               var testTypes = (from x in testAssembly.GetTypes()
+               var testTypes = (from x in TestingContext.TestAssembly.GetTypes()
                                 where LinqTestHelpers.HasAttribute(typeof(StagingTest), x)
                                 || LinqTestHelpers.HasAttribute(typeof(ManualTest), x)
                                 select x);
@@ -135,6 +134,7 @@ namespace Weavver.Testing
                     );
           }
 //-------------------------------------------------------------------------------------------
+          [System.Diagnostics.DebuggerStepThrough]
           private void RunTest(System_Tests test)
           {
                //test.StartTime = DateTime.UtcNow;
@@ -147,7 +147,7 @@ namespace Weavver.Testing
                string typePath = test.Path.Substring(0, test.Path.LastIndexOf("."));
                string methodName = test.Path.Substring(test.Path.LastIndexOf(".") + 1);
 
-               var testType = (from x in testAssembly.GetTypes()
+               var testType = (from x in TestingContext.TestAssembly.GetTypes()
                                 where x.FullName == typePath
                                 select x).FirstOrDefault();
 
@@ -159,15 +159,15 @@ namespace Weavver.Testing
 
                MethodInfo testMethod = testType.GetMethods().Where(x => x.Name == methodName).FirstOrDefault();
 
-               object o = Activator.CreateInstance(testType);
+               object activatedClass = (testType.IsAbstract) ? null : Activator.CreateInstance(testType);
                test.Log += " -> " + testMethod.Name + "()";
                try
                {
                     var SetUpMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureSetUpAttribute));
                     if (SetUpMethod != null)
-                         SetUpMethod.Invoke(o, null);
+                         SetUpMethod.Invoke(activatedClass, null);
 
-                    testMethod.Invoke(o, null);
+                    testMethod.Invoke(activatedClass, null);
 
                     test.Status = "Passed";
                }
@@ -184,7 +184,7 @@ namespace Weavver.Testing
                          {
                               var TearDownMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureTearDownAttribute));
                               if (TearDownMethod != null)
-                                   TearDownMethod.Invoke(o, null);
+                                   TearDownMethod.Invoke(activatedClass, null);
                          }
                     }
                     catch { }

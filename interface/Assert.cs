@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Weavver.Testing
 {
+     [System.Diagnostics.DebuggerStepThrough]
      public static class Assert
      {
 //-------------------------------------------------------------------------------------------
@@ -51,7 +52,20 @@ namespace Weavver.Testing
                if (String.IsNullOrEmpty(test))
                     throw new Exception(message);
           }
-          
+//-------------------------------------------------------------------------------------------          
+          public static void IsFalse(bool shouldBeFalse, string message)
+          {
+               if (shouldBeFalse == true)
+                    throw new Exception(message);
+          }
+//-------------------------------------------------------------------------------------------
+          public static void Greater(int thisShouldBeGreater, int CompareTo, string errorMessage)
+          {
+               if (thisShouldBeGreater <= CompareTo)
+               {
+                    throw new Exception(errorMessage);
+               }
+          }
 //-------------------------------------------------------------------------------------------
      }
 }
