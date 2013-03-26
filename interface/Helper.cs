@@ -19,7 +19,8 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           public static string GetAppSetting(string settingname)
           {
-               string configPath = @"C:\Weavver\Main\Projects\Testing\app.config";
+               string srcFolder = Directory.GetParent(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)) + "\\src\\";
+               string configPath = srcFolder + "app.config";
 
                Assert.IsTrue(File.Exists(configPath), "The config was not found at: " + configPath);
 

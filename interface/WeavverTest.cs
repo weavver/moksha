@@ -82,8 +82,7 @@ namespace Weavver.Testing
 
                               //"--start-maximized"
                               capabilities.AddArgument("--start-maximized");
-                              //capabilities.SetCapability("webdriver.chrome.bin", @"C:\Weavver\Main\Projects\3rd Party\Testing\chromedriver.exe");
-                              webDriver = new OpenQA.Selenium.Chrome.ChromeDriver(@"C:\Weavver\Main\Projects\3rd Party\Testing\", capabilities);
+                              string repoPath = Directory.GetParent(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)).FullName;                              webDriver = new OpenQA.Selenium.Chrome.ChromeDriver(Path.Combine(repoPath, @"vendors\selenium"), capabilities);
                               break;
 
                          case "firefox": webDriver = new OpenQA.Selenium.Firefox.FirefoxDriver(); break;
@@ -127,6 +126,7 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           public void SelectDDLOption(By target, string optionText)
           {
+               WaitForPageLoad();
                IWebElement targetObj = (IWebElement) webDriver.FindElement(target);
                SelectElement se = new SelectElement(targetObj);
                var option = (from x in se.Options

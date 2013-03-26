@@ -95,6 +95,9 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           private void RunAllTests_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
           {
+               StartTestRun.Enabled = false;
+               PauseTestRun.Enabled = true;
+               StopTestRun.Enabled = true;
                //ThreadPool.QueueUserWorkItem(o => RunTests());
           }
 //-------------------------------------------------------------------------------------------
@@ -312,6 +315,25 @@ namespace Weavver.Testing
                if (ct.IsCancellationRequested)
                {
                }
+          }
+//-------------------------------------------------------------------------------------------
+          private void PauseTestRun_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+          {
+               StartTestRun.Enabled = true;
+               PauseTestRun.Enabled = false;
+               StopTestRun.Enabled = true;
+          }
+//-------------------------------------------------------------------------------------------
+          private void StopTestRun_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+          {
+               StartTestRun.Enabled = true;
+               PauseTestRun.Enabled = false;
+               StopTestRun.Enabled = false;
+          }
+//-------------------------------------------------------------------------------------------
+          private void PushBuild_Click(object sender, EventArgs e)
+          {
+               MessageBox.Show("Have you implemented the [PushProduction] attribute?");
           }
 //-------------------------------------------------------------------------------------------
      }

@@ -6,3 +6,4 @@ obj
 build
 !app.default.config
 *.user
+chromedriver.log
