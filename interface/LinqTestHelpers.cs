@@ -9,9 +9,9 @@ namespace Weavver.Testing
      public class LinqTestHelpers
      {    
 //-------------------------------------------------------------------------------------------
-          public static MethodInfo GetMethodForAttribute(Type searchThis, Type matchThis)
+          public static IEnumerable<MethodInfo> GetMethodsForAttribute(Type searchThis, Type matchThis)
           {
-               var SetUpMethod = searchThis.GetMethods().Where(x => x.GetCustomAttributes(matchThis, true).Count() > 0).FirstOrDefault();
+               var SetUpMethod = searchThis.GetMethods().Where(x => x.GetCustomAttributes(matchThis, true).Count() > 0);
                return SetUpMethod;
           }
 //-------------------------------------------------------------------------------------------

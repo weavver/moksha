@@ -103,6 +103,8 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
           {
+               if (e.RowIndex == -1)
+                    return;
                System_Tests test = (System_Tests)dataGridView1.Rows[e.RowIndex].DataBoundItem;
 
                QueueTestRun(test);
@@ -166,9 +168,8 @@ namespace Weavver.Testing
                test.Log += " -> " + testMethod.Name + "()";
                try
                {
-                    var SetUpMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureSetUpAttribute));
-                    if (SetUpMethod != null)
-                         SetUpMethod.Invoke(activatedClass, null);
+                    var SetUpMethods = LinqTestHelpers.GetMethodsForAttribute(testType, typeof(TestFixtureSetUpAttribute));
+                    SetUpMethods.ToList().ForEach(matchedMethod => matchedMethod.Invoke(activatedClass, null));
 
                     testMethod.Invoke(activatedClass, null);
 
@@ -185,9 +186,8 @@ namespace Weavver.Testing
                     {
                          if (!bSkipCleanUp.Checked)
                          {
-                              var TearDownMethod = LinqTestHelpers.GetMethodForAttribute(testType, typeof(TestFixtureTearDownAttribute));
-                              if (TearDownMethod != null)
-                                   TearDownMethod.Invoke(activatedClass, null);
+                              var TearDownMethods = LinqTestHelpers.GetMethodsForAttribute(testType, typeof(TestFixtureTearDownAttribute));
+                              TearDownMethods.ToList().ForEach(matchedMethod => matchedMethod.Invoke(activatedClass, null));
                          }
                     }
                     catch { }
