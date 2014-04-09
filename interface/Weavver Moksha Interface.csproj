@@ -64,7 +64,7 @@
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\3rd Party\log4net.dll</HintPath>
+      <HintPath>..\vendors\log4net\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -95,10 +95,10 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="WebDriver">
+    <Reference Include="WebDriver, Version=2.35.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
       <HintPath>..\vendors\selenium\WebDriver.dll</HintPath>
     </Reference>
-    <Reference Include="WebDriver.Support">
+    <Reference Include="WebDriver.Support, Version=2.35.0.0, Culture=neutral, PublicKeyToken=1c2bd1631853048f, processorArchitecture=MSIL">
       <HintPath>..\vendors\selenium\WebDriver.Support.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="RunThisNow.cs" />
     <Compile Include="StagingTestAttribute.cs" />
+    <Compile Include="TcpCheck.cs" />
     <Compile Include="TestFixtureSetUpAttribute.cs" />
     <Compile Include="TestFixtureTearDownAttribute.cs" />
     <Compile Include="WeavverApp.cs" />
