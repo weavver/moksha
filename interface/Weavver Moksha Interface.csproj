@@ -68,7 +68,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Weavver\Main\Projects\3rd Party\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\vendors\newtonsoft\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="OpenPop, Version=2.0.3.358, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
