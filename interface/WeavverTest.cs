@@ -50,8 +50,8 @@ namespace Weavver.Testing
                //     chromeDriver.Kill();
                //}
 
-               string browser = Helper.GetAppSetting("browser");
-               string driver = Helper.GetAppSetting("driver");
+               string browser = Helper.GetAppSetting("selenium_browser");
+               string driver = Helper.GetAppSetting("selenium_driver");
                if (driver == "remotewebdriver")
                {
                     Uri seleniumServer = new Uri("http://" + Helper.GetAppSetting("selenium_server") + ":" + Int32.Parse(Helper.GetAppSetting("selenium_port") + "/wd/hub"));
@@ -82,7 +82,9 @@ namespace Weavver.Testing
 
                               //"--start-maximized"
                               capabilities.AddArgument("--start-maximized");
-                              string repoPath = Directory.GetParent(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location)).FullName;                              webDriver = new OpenQA.Selenium.Chrome.ChromeDriver(Path.Combine(repoPath, @"vendors\selenium"), capabilities);
+                              string chromeDriverFolder = Helper.GetAppSetting("selenium_chromedriverfolder");
+                              Assert.IsTrue(File.Exists(chromeDriverFolder + "\\chromedriver.exe"), "Please check that the option selenium_chromedriverfolder in your .config file correctly points to the FOLDER containing chromedriver.exe");
+                              webDriver = new OpenQA.Selenium.Chrome.ChromeDriver(chromeDriverFolder, capabilities);
                               break;
 
                          case "firefox": webDriver = new OpenQA.Selenium.Firefox.FirefoxDriver(); break;
@@ -126,8 +128,14 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           public void SelectDDLOption(By target, string optionText)
           {
-               WaitForPageLoad();
-               IWebElement targetObj = (IWebElement) webDriver.FindElement(target);
+               SelectDDLOption(webDriver, target, optionText);
+          }
+//-------------------------------------------------------------------------------------------
+          public void SelectDDLOption(IWebDriver selectedWebDriver, By target, string optionText)
+          {
+               Console.WriteLine("Selecting option '" + optionText + "' in element " + target.ToString());
+               WaitForPageLoad(selectedWebDriver);
+               IWebElement targetObj = (IWebElement) selectedWebDriver.FindElement(target);
                SelectElement se = new SelectElement(targetObj);
                var option = (from x in se.Options
                              where x.Text == optionText
@@ -135,18 +143,31 @@ namespace Weavver.Testing
 
                Assert.IsNotNull(option, "Option text: " + option + " does not exist.");
                se.SelectByText(optionText);
-               WaitForPageLoad();
+               WaitForPageLoad(selectedWebDriver);
                System.Threading.Thread.Sleep(1000);
+          }
+//-------------------------------------------------------------------------------------------
+          public void SendKeys(IWebDriver selectedWebDriver, By target, string text)
+          {
+               Console.WriteLine("Sending '" + text + "' to target " + target.ToString());
+               selectedWebDriver.FindElement(target).SendKeys(text);
           }
 //-------------------------------------------------------------------------------------------
           public void ClickButton(By target)
           {
-               int y = webDriver.FindElement(target).Location.Y;
-               if (y > 100)
-                    y = y - 100;
-               ((IJavaScriptExecutor)webDriver).ExecuteScript("window.scrollBy(0," + y + ");");
+               ClickButton(webDriver, target);
+          }
+//-------------------------------------------------------------------------------------------
+          public void ClickButton(IWebDriver selectedWebDriver, By target)
+          {
+               Console.WriteLine("Clicking button " + target.ToString());
+               //int targetY = selectedWebDriver.FindElement(target).Location.Y;
+               //int scrollBy = targetY; // seperate variable for debugging purposes
+               //if (targetY > 100)
+               //     scrollBy = targetY - 100;
+               //((IJavaScriptExecutor)selectedWebDriver).ExecuteScript("window.scrollTo(0," + scrollBy + ");");
 
-               webDriver.FindElement(target).Click();
+               selectedWebDriver.FindElement(target).Click();
           }
 //-------------------------------------------------------------------------------------------
           public void SetControlValue(By locator, string newValue)
@@ -174,11 +195,16 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           public bool WaitForTextExists(By locator, string text)
           {
+               return WaitForTextExists(webDriver, locator, text);
+          }
+//-------------------------------------------------------------------------------------------
+          public bool WaitForTextExists(IWebDriver selectedDriver, By locator, string text)
+          {
                Stopwatch sw = new Stopwatch();
                sw.Start();
                while (sw.Elapsed.Seconds < 30)
                {
-                    IWebElement foundElement = webDriver.FindElement(locator);
+                    IWebElement foundElement = selectedDriver.FindElement(locator);
                     if (foundElement.Text.Contains(text))
                     {
                          return true;
@@ -221,17 +247,42 @@ namespace Weavver.Testing
                webDriver.FindElement(By.LinkText("Sign Out")).Click();
                WaitForPageLoad();
                Assert.AreEqual("Thank you, please come again!", webDriver.Title);
-               Assert.IsTrue(webDriver.PageSource.Contains("Thank you for using using our services."), "Thank you message is missing");
+               Assert.IsTrue(webDriver.PageSource.Contains("Remember to bookmark our website for faster access."), "Thank you message is missing");
           }
 //-------------------------------------------------------------------------------------------
           [DebuggerNonUserCode]
           public void WaitForPageLoad()
           {
-               WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(10));
+               WaitForPageLoad(webDriver);
+          }
+//-------------------------------------------------------------------------------------------
+          public void WaitForPageLoad(IWebDriver selectedWebDriver)
+          {
+               Stopwatch sw = new Stopwatch();
+               sw.Start();
+               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(10));
                wait.Until<bool>((d) =>
                {
-                    IJavaScriptExecutor js = webDriver as IJavaScriptExecutor;
-                    bool loaded = !(bool)js.ExecuteScript("return pageloading;");
+                    IJavaScriptExecutor js = selectedWebDriver as IJavaScriptExecutor;
+                    bool loaded = (bool)js.ExecuteScript("return isPageLoaded;");
+
+                    if (loaded)
+                    {
+                         CheckThatImagesLoaded();
+                    }
+                    return loaded;
+               });
+          }
+//-------------------------------------------------------------------------------------------
+          public void WaitForDialogLoaded(IWebDriver selectedWebDriver)
+          {
+               Stopwatch sw = new Stopwatch();
+               sw.Start();
+               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(10));
+               wait.Until<bool>((d) =>
+               {
+                    IJavaScriptExecutor js = selectedWebDriver as IJavaScriptExecutor;
+                    bool loaded = (bool)js.ExecuteScript("return isDialogLoaded;");
 
                     if (loaded)
                     {

@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <project name="Weavver Moksha" default="rebuild">
      <property name="nant.settings.currentframework" value="net-4.0" />
-	<property name="build.dir" value="C:\Weavver\github\moksha\build" />
      <property name="debug" value="true"/>
      <target name="clean" description="remove all generated files">
 		<delete dir="${build.dir}" />
-          <delete dir="src\bin" />
+          <delete dir="src\Bin" />
           <delete dir="src\obj" />
+          <delete dir="interface\Bin" />
+          <delete dir="interface\obj" />
      </target>
      <target name="build">
           <mkdir dir="${build.dir}" />
