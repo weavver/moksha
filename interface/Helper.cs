@@ -20,7 +20,16 @@ namespace Weavver.Testing
           public static string GetAppSetting(string settingname)
           {
                string callingAssemblyFolderPath = Path.GetDirectoryName(System.Reflection.Assembly.GetCallingAssembly().Location);
+
+               Console.WriteLine("Calling assembly path: " + callingAssemblyFolderPath);
+
+               // It's useful to make changes directly to the App.config listed in Solution explorer while testing/debugging
+#if DEBUG
                string srcFolder = Directory.GetParent(callingAssemblyFolderPath).Parent.FullName;
+#else
+               string srcFolder = callingAssemblyFolderPath;
+#endif
+
                string configPath = Path.Combine(srcFolder, "app.config");
 
                Assert.IsTrue(File.Exists(configPath), "The config was not found at: " + configPath);

@@ -167,7 +167,12 @@ namespace Weavver.Testing
                //     scrollBy = targetY - 100;
                //((IJavaScriptExecutor)selectedWebDriver).ExecuteScript("window.scrollTo(0," + scrollBy + ");");
 
-               selectedWebDriver.FindElement(target).Click();
+               //((IJavaScriptExecutor)selectedWebDriver).ExecuteScript("window.scrollTo(0," + scrollBy + ");");
+
+
+               ((IJavaScriptExecutor)webDriver).ExecuteScript("arguments[0].click();", target).ToString();
+
+               //selectedWebDriver.FindElement(target).Click();
           }
 //-------------------------------------------------------------------------------------------
           public void SetControlValue(By locator, string newValue)
@@ -260,7 +265,7 @@ namespace Weavver.Testing
           {
                Stopwatch sw = new Stopwatch();
                sw.Start();
-               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(10));
+               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(30));
                wait.Until<bool>((d) =>
                {
                     IJavaScriptExecutor js = selectedWebDriver as IJavaScriptExecutor;
@@ -278,7 +283,7 @@ namespace Weavver.Testing
           {
                Stopwatch sw = new Stopwatch();
                sw.Start();
-               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(10));
+               WebDriverWait wait = new WebDriverWait(selectedWebDriver, TimeSpan.FromSeconds(30));
                wait.Until<bool>((d) =>
                {
                     IJavaScriptExecutor js = selectedWebDriver as IJavaScriptExecutor;
