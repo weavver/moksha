@@ -104,7 +104,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="TestingContext.cs" />
+    <Compile Include="MokshaContext.cs" />
     <Compile Include="TestingHarness.cs">
       <SubType>Form</SubType>
     </Compile>

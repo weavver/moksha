@@ -118,6 +118,7 @@
     <Compile Include="TcpCheck.cs" />
     <Compile Include="TestFixtureSetUpAttribute.cs" />
     <Compile Include="TestFixtureTearDownAttribute.cs" />
+    <Compile Include="MokshaInterfaceContext.cs" />
     <Compile Include="WeavverApp.cs" />
     <Compile Include="WeavverTest.cs" />
   </ItemGroup>

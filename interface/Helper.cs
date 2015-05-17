@@ -32,7 +32,12 @@ namespace Weavver.Testing
 
                string configPath = Path.Combine(srcFolder, "app.config");
 
+               if (!String.IsNullOrEmpty(MokshaInterfaceContext.Arguments["config"]))
+                    configPath = MokshaInterfaceContext.Arguments["config"];
+
                Assert.IsTrue(File.Exists(configPath), "The config was not found at: " + configPath);
+
+               Console.WriteLine("Loading config from: " + configPath);
 
                ExeConfigurationFileMap map = new ExeConfigurationFileMap();
                map.ExeConfigFilename = configPath;

@@ -34,16 +34,16 @@ namespace Weavver.Testing
 
                dataGridView1.AutoGenerateColumns = false;
 
-               if (TestingContext.Arguments["testlib"] != null)
+               if (MokshaInterfaceContext.Arguments["testlib"] != null)
                {
-                    TestingContext.TestAssembly = Assembly.LoadFile(TestingContext.Arguments["testlib"]);
+                    MokshaInterfaceContext.TestAssembly = Assembly.LoadFile(MokshaInterfaceContext.Arguments["testlib"]);
                }
                else
                {
-                    TestingContext.TestAssembly = Assembly.GetExecutingAssembly();
+                    MokshaInterfaceContext.TestAssembly = Assembly.GetExecutingAssembly();
                }
 
-               var testTypes = (from x in TestingContext.TestAssembly.GetTypes()
+               var testTypes = (from x in MokshaInterfaceContext.TestAssembly.GetTypes()
                                 where LinqTestHelpers.HasAttribute(typeof(StagingTest), x)
                                 || LinqTestHelpers.HasAttribute(typeof(ManualTest), x)
                                 select x);
@@ -62,7 +62,7 @@ namespace Weavver.Testing
                          newTest.Status = "Untested";
                          newTest.Path = type.FullName + "." + method.Name;
                          newTest.IsStagingTest = (method.GetCustomAttributes(typeof(StagingTest), true).Count() > 0);
-                         TestingContext.Tests.Add(newTest);
+                         MokshaContext.Tests.Add(newTest);
                     }
                }
 
@@ -70,7 +70,7 @@ namespace Weavver.Testing
 
                tbSearch.Focus();
 
-               if (TestingContext.Arguments["runtests"] == "true")
+               if (MokshaInterfaceContext.Arguments["runtests"] == "true")
                {
                     Console.WriteLine("Running tests..");
                     ThreadPool.QueueUserWorkItem(o => RunTests());
@@ -79,7 +79,7 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           private void BindData()
           {
-               var sortedTests = from x in TestingContext.Tests
+               var sortedTests = from x in MokshaContext.Tests
                                  orderby x.Path ascending
                                  select x;
 
@@ -119,7 +119,7 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           public void RunTests()
           {
-               var sortedTests = from x in TestingContext.Tests
+               var sortedTests = from x in MokshaContext.Tests
                                  where x.IsStagingTest
                                  orderby x.Path ascending
                                  select x;
@@ -152,7 +152,7 @@ namespace Weavver.Testing
                string typePath = test.Path.Substring(0, test.Path.LastIndexOf("."));
                string methodName = test.Path.Substring(test.Path.LastIndexOf(".") + 1);
 
-               var testType = (from x in TestingContext.TestAssembly.GetTypes()
+               var testType = (from x in MokshaInterfaceContext.TestAssembly.GetTypes()
                                 where x.FullName == typePath
                                 select x).FirstOrDefault();
 
@@ -277,7 +277,7 @@ namespace Weavver.Testing
 //-------------------------------------------------------------------------------------------
           private void RunPublisher(CancellationToken  ct)
           {
-               var sortedTests = from x in TestingContext.Tests
+               var sortedTests = from x in MokshaContext.Tests
                                  where x.IsStagingTest
                                  orderby x.Path ascending
                                  select x;

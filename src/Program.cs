@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Data.Linq;
 using System.Windows.Forms;
 using System.Threading;
+using Weavver.Utilities;
 
 namespace Weavver.Testing
 {
@@ -22,7 +23,9 @@ namespace Weavver.Testing
                AppDomain currentDomain = AppDomain.CurrentDomain;
                currentDomain.AssemblyResolve += new ResolveEventHandler(LoadFromSameFolder);
 
-               TestingContext.Arguments = new Utilities.CommandLineArguments(arguments);
+               CommandLineArguments argumentParser = new Utilities.CommandLineArguments();
+               argumentParser.Parameters = MokshaInterfaceContext.Arguments;
+               argumentParser.Parse(arguments);
 
                Application.EnableVisualStyles();
                Application.SetCompatibleTextRenderingDefault(false);
@@ -45,7 +48,7 @@ namespace Weavver.Testing
                string assemblyPath = Path.Combine(folderPath, new AssemblyName(args.Name).Name + ".dll");
                if (File.Exists(assemblyPath) == false)
                {
-                    assemblyPath = Path.Combine(Path.GetDirectoryName(TestingContext.TestAssembly.Location), new AssemblyName(args.Name).Name + ".dll");
+                    assemblyPath = Path.Combine(Path.GetDirectoryName(MokshaInterfaceContext.TestAssembly.Location), new AssemblyName(args.Name).Name + ".dll");
                     if (File.Exists(assemblyPath) == false)  { return null;}
                }
                Assembly assembly = Assembly.LoadFrom(assemblyPath);
